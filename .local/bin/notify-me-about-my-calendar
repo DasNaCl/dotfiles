@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+time="10M"
+old_events="No events"
+vdirsyncer discover
+while true
+do
+  new_events="$(/usr/bin/khal list --format '{title}' now $time)"
+
+  if [ "$(/usr/bin/khal list --format '{title}' now $time | grep -v 'No events')" ]
+  then
+    if [ "$old_events" == "$new_events" ]
+    then
+      sleep 1m
+    else
+      /usr/bin/notify-send --expire-time=300000 "$(/usr/bin/khal list --format '{title}' now $time)" "$(/usr/bin/khal list --format '{description}' now $time)"
+      old_events="$new_events"
+      sleep 1m
+    fi
+  else
+    sleep 1m
+  fi
+  vdirsyncer discover
+  vdirsyncer sync
+done
