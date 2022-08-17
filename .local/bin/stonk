@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+
+exit 0
+
+STONKPATH="$HOME/.config/stonk"
+
+touch "$STONKPATH"
+
+ISIN=$1
+
+green="#99FF99"
+red="#FF6666"
+
+URL=https://www.tradegate.de/orderbuch.php\?isin\=$ISIN
+
+bid=$(curl -s $URL | grep \"ask\" | sed 's/<[^>]*>//g' | xargs | sed 's/,/./')
+
+
+perc=$(( $(cat $STONKPATH) / $bid ))
+
+color=$green
+sign="↑ "
+if (( ${perc%%.*} >= 1.00 )) ; then
+  sign="↓ "
+  color=$red
+fi
+
+echo $bid > $STONKPATH
+
+
+

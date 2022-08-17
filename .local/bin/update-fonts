@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+fc-cache -fv
+mtxrun --script fonts --reload
+
