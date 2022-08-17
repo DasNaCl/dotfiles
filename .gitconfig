@@ -1,0 +1,7 @@
+[user]
+  email = matthis.kruse@cispa.de
+  name = Matthis Kruse
+[pull]
+  rebase = false
+[init]
+	defaultBranch = main
