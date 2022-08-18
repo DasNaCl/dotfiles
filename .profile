@@ -18,9 +18,19 @@ export FILE="thunar"
 # ~/ clean-up
 export ZDOTDIR="$HOME/.config/zsh"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
-export RUSTUP_HOME="\$HOME/.local/rustup"
-export CARGO_HOME="\$HOME/.local/cargo"
-export OPAMROOT="\$HOME/.local/opam"
+export RUSTUP_HOME="$HOME/.local/rustup"
+export CARGO_HOME="$HOME/.local/cargo"
+export OPAMROOT="$HOME/.local/opam"
+export TEXMFHOME="$HOME/.local/texmf"
+export TEXMFVAR="$HOME/.local/texlive/texmf-var"
+export TEXMFCONFIG="$HOME/.local/texlive/texmf-config"
+export R_LIBS_USER="$HOME/.local/R/x86_64-linux-gnu-library/$(R --version | grep 'R version' | cut -f 3 -d ' ' -)"
+export R_PROFILE_USER="${XDG_CONFIG_HOME:-$HOME/.config}/R/rprofile"
+export R_ENVIRON_USER="${XDG_CONFIG_HOME:-$HOME/.config}/R/renviron"
+export CONDA_ENVS_PATH="${XDG_CONFIG_HOME:-$HOME/.config/conda/envs}"
+export CONDA_PKGS_PATH="${XDG_CONFIG_HOME:-$HOME/.config/conda/pkgs}"
+
+mkdir -p "$R_LIBS_USER"
 
 # Other program settings
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
