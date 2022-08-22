@@ -16,18 +16,18 @@ focus_new_windows = true
 command = "Execute"
 value = "dmenu_run"
 modifier = ["modkey"]
-key = "p"
+key = "d"
 
 [[keybind]]
 command = "Execute"
 value = "$TERMINAL"
-modifier = ["modkey", "Shift"]
+modifier = ["modkey"]
 key = "Return"
 
 [[keybind]]
 command = "CloseWindow"
 value = ""
-modifier = ["modkey", "Shift"]
+modifier = ["modkey"]
 key = "q"
 
 [[keybind]]
@@ -41,12 +41,6 @@ command = "Execute"
 value = "loginctl kill-session $XDG_SESSION_ID"
 modifier = ["modkey", "Shift"]
 key = "x"
-
-[[keybind]]
-command = "Execute"
-value = "slock"
-modifier = ["modkey", "Control"]
-key = "l"
 
 [[keybind]]
 command = "MoveToLastWorkspace"
