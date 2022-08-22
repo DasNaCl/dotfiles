@@ -12,7 +12,7 @@ for file in $(find . -type f -not -path './.git/*' | sed '/.\/update.sh/d' | sed
     mkdir -p "$(dirname "$homef")"
     cp "$cfgf" "$homef"
   else
-    diff -u "$homef" "$cfgf" | patch
+    diff -u "$homef" "$cfgf" | patch -p0 -d/
   fi
 done
 
@@ -24,7 +24,7 @@ else
   diff -u /etc/local.d/update.start "$configspath/update.sh" > "$configspath/update.sh.patch"
   if cat "$configspath/update.sh.patch" | read -r _USELESSREPLY; then
     echo "The script will patch the file /etc/local.d/update.start"
-    cat "$configspath/update.sh.patch" | sudo patch
+    cat "$configspath/update.sh.patch" | sudo patch -p0 -d/
   fi
 fi
 
