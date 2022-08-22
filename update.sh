@@ -21,7 +21,7 @@ if [ ! -f /etc/local.d/update.start ]; then
   sudo cp "$configspath/update.sh" /etc/local.d/update.start
   sudo chmod +x /etc/local.d/update.start
 else
-  diff -u "$configspath/update.sh" /etc/local.d/update.start > "$configspath/update.sh.patch"
+  diff -u /etc/local.d/update.start "$configspath/update.sh" > "$configspath/update.sh.patch"
   if cat "$configspath/update.sh.patch" | read -r _USELESSREPLY; then
     echo "The script will patch the file /etc/local.d/update.start"
     sudo patch /etc/local.d/update.start "$configspath/update.sh.patch"
