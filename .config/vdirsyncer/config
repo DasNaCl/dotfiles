@@ -17,4 +17,6 @@ fileext = ".ics"
 type = "caldav"
 url = "https://amaterasu.xyz/remote.php/dav"
 auth = basic
+username.fetch = ["command", "nextclouduser.sh"]
+password.fetch = ["command", "nextcloudpass.sh"]
 
