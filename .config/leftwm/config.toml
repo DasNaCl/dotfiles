@@ -20,7 +20,7 @@ key = "p"
 
 [[keybind]]
 command = "Execute"
-value = "kitty"
+value = "$TERMINAL"
 modifier = ["modkey", "Shift"]
 key = "Return"
 
