@@ -20,6 +20,12 @@ key = "d"
 
 [[keybind]]
 command = "Execute"
+value = "passwordprompt"
+modifier = ["modkey"]
+key = "p"
+
+[[keybind]]
+command = "Execute"
 value = "$TERMINAL"
 modifier = ["modkey"]
 key = "Return"
