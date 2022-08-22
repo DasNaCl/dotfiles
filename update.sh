@@ -26,6 +26,7 @@ else
     echo "The script will patch the file /etc/local.d/update.start"
     cat "$configspath/update.sh.patch" | sudo patch -p0 -d/
   fi
+  rm update.sh.patch
 fi
 
 cd "$oldpwd" || exit
