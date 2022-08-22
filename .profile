@@ -4,9 +4,9 @@
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export PATH="$PATH:$HOME/.emacs.d/bin/"
 export PATH="$PATH:/opt/context/tex/texmf-linux-64/bin"
-export PATH="$PATH:/opt/texlive/2021/bin/x86_64-linux/"
-export MANPATH="$MANPATH:/opt/texlive/2021/texmf-dist/doc/man/"
-export INFOPATH="$INFOPATH:/opt/texlive/2021/texmf-dist/doc/info/"
+export PATH="$PATH:/opt/texlive/2022/bin/x86_64-linux/"
+export MANPATH="$MANPATH:/opt/texlive/2022/texmf-dist/doc/man/"
+export INFOPATH="$INFOPATH:/opt/texlive/2022/texmf-dist/doc/info/"
 
 # Default programs
 export EDITOR="nvim"
