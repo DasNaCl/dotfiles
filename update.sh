@@ -8,6 +8,8 @@ cd "$configspath"
 for file in $(find . -type f -not -path './.git/*' | sed '/.\/update.sh/d' | sed '/.\/.gitignore/d'); do
   homef="$HOME"/"$file"
   cfgf="$configspath"/"$file"
+  echo "home: $homef"
+  echo "cfgf: $cfgf"
   if [ ! -f "$homef" ]; then
     cp "$cfgf" "$homef"
   else
@@ -20,10 +22,10 @@ done
 
 if [ ! -f /etc/local.d/update.start ]; then
   echo "The script will install itself to /etc/local.d/ so that it gets run at boot."
-  sudo cp "$0" /etc/local.d/update.start
+  sudo cp "$(realpath "$0")" /etc/local.d/update.start
   sudo chmod +x /etc/local.d/update.start
 else
-  diff "$0" /etc/local.d/update.start > "$configspath/update.sh.patch"
+  diff "$(realpath "$0")" /etc/local.d/update.start > "$configspath/update.sh.patch"
   if cat "$configspath/update.sh.patch" | read -r _USELESSREPLY; then
     echo "The script will patch the file /etc/local.d/update.start"
     sudo patch /etc/local.d/update.start "$configspath/update.sh.patch"
