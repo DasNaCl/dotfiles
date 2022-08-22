@@ -24,7 +24,7 @@ else
   diff -u /etc/local.d/update.start "$configspath/update.sh" > "$configspath/update.sh.patch"
   if cat "$configspath/update.sh.patch" | read -r _USELESSREPLY; then
     echo "The script will patch the file /etc/local.d/update.start"
-    sudo patch /etc/local.d/update.start "$configspath/update.sh.patch"
+    cat "$configspath/update.sh.patch" | sudo patch
   fi
 fi
 
