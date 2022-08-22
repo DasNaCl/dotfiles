@@ -79,6 +79,12 @@ modifier = ["modkey", "Shift"]
 key = "space"
 
 [[keybind]]
+command = "NextLayout"
+value = ""
+modifier = ["modkey"]
+key = "space"
+
+[[keybind]]
 command = "FocusWindowUp"
 value = ""
 modifier = ["modkey"]
