@@ -18,5 +18,5 @@ type = "caldav"
 url = "https://amaterasu.xyz/remote.php/dav"
 auth = basic
 username.fetch = ["command", "nextclouduser.sh"]
-password.fetch = ["command", "pass", "nextcloud/matthis"]
+password.fetch = ["command", "nextcloudpass.sh"]
 
