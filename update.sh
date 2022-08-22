@@ -8,16 +8,16 @@ cd "$configspath" || exit
 for file in $(find . -type f -not -path './.git/*' | sed '/.\/update.sh/d' | sed '/.\/.gitignore/d'); do
   homef="$HOME"/"$file"
   cfgf="$configspath"/"$file"
-  echo "home: $homef"
-  echo "cfgf: $cfgf"
   if [ ! -f "$homef" ]; then
+    dirname "$(realpath "$homef")"
     mkdir -p "$(dirname "$(realpath "$homef")")"
     cp "$cfgf" "$homef"
   else
     patchf="$configspath"/"$file.patch"
     diff "$homef" "$cfgf" > "$patchf"
     patch "$homef" "$cfgf"
-    rm "$configspath"/"$file.patch"
+    cat "$patchf"
+    rm "$patchf"
   fi
 done
 
@@ -33,5 +33,5 @@ else
   fi
 fi
 
-cd "$oldpwd"
+cd "$oldpwd" || exit
 
