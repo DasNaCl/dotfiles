@@ -76,7 +76,7 @@ key = "j"
 command = "MoveWindowTop"
 value = ""
 modifier = ["modkey", "Shift"]
-key = "Return"
+key = "space"
 
 [[keybind]]
 command = "FocusWindowUp"
