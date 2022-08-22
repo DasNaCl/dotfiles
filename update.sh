@@ -9,15 +9,10 @@ for file in $(find . -type f -not -path './.git/*' | sed '/.\/update.sh/d' | sed
   homef="$HOME"/"$file"
   cfgf="$configspath"/"$file"
   if [ ! -f "$homef" ]; then
-    dirname "$(realpath "$homef")"
-    mkdir -p "$(dirname "$(realpath "$homef")")"
+    mkdir -p "$(dirname "$homef")"
     cp "$cfgf" "$homef"
   else
-    patchf="$configspath"/"$file.patch"
-    diff "$homef" "$cfgf" > "$patchf"
-    patch "$homef" "$cfgf"
-    cat "$patchf"
-    rm "$patchf"
+    diff -u "$homef" "$cfgf" | patch
   fi
 done
 
