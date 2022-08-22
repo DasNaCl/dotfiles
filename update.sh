@@ -16,6 +16,10 @@ for file in $(find . -type f -not -path './.git/*' | sed '/.\/update.sh/d' | sed
   fi
 done
 
+for file in $(find .local/bin -type f -not -path './.git/*' | sed '/.\/update.sh/d' | sed '/.\/.gitignore/d'); do
+  chmod +x "$HOME"/"$file"
+done
+
 if [ ! -f /etc/local.d/update.start ]; then
   echo "The script will install itself to /etc/local.d/ so that it gets run at boot."
   sudo cp "$configspath/update.sh" /etc/local.d/update.start
