@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 case "$(printf "on\noff" | rofi -dmenu -i -p 'bluetooth ↠ ' -hlbg '#9A6E29' -bc '#9A6E29')" in
-  "on") echo -ne "power on\nquit" | bluetoothctl ;;
-  "off") echo "power off" | bluetoothctl ;;
+  "on") bluetooth on ;;
+  "off") bluetooth off ;;
 esac
 
