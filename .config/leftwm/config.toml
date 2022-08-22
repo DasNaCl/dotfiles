@@ -69,7 +69,7 @@ key = "j"
 [[keybind]]
 command = "MoveWindowTop"
 value = ""
-modifier = ["modkey"]
+modifier = ["modkey", "Shift"]
 key = "Return"
 
 [[keybind]]
