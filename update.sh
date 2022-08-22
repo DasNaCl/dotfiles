@@ -2,6 +2,9 @@
 
 configspath="${MY_DOTFILES:-$HOME/dotfiles}"
 
+oldpwd="$PWD"
+cd "$configspath"
+
 for file in $(find . -type f -not -path './.git/*' | sed '/.\/update.sh/d' | sed '/.\/.gitignore/d'); do
   homef="$HOME"/"$file"
   cfgf="$configspath"/"$file"
@@ -22,4 +25,5 @@ else
   fi
 fi
 
+cd "$oldpwd"
 
