@@ -24,13 +24,15 @@ export OPAMROOT="$HOME/.local/opam"
 export TEXMFHOME="$HOME/.local/texmf"
 export TEXMFVAR="$HOME/.local/texlive/texmf-var"
 export TEXMFCONFIG="$HOME/.local/texlive/texmf-config"
-export R_LIBS_USER="$HOME/.local/R/x86_64-linux-gnu-library/$(R --version | grep 'R version' | cut -f 3 -d ' ' -)"
-export R_PROFILE_USER="${XDG_CONFIG_HOME:-$HOME/.config}/R/rprofile"
-export R_ENVIRON_USER="${XDG_CONFIG_HOME:-$HOME/.config}/R/renviron"
+if command -v R --version &>/dev/null; then
+  export R_LIBS_USER="$HOME/.local/R/x86_64-linux-gnu-library/$(R --version | grep 'R version' | cut -f 3 -d ' ' -)"
+  export R_PROFILE_USER="${XDG_CONFIG_HOME:-$HOME/.config}/R/rprofile"
+  export R_ENVIRON_USER="${XDG_CONFIG_HOME:-$HOME/.config}/R/renviron"
+  mkdir -p "$R_LIBS_USER"
+fi
 export CONDA_ENVS_PATH="${XDG_CONFIG_HOME:-$HOME/.config/conda/envs}"
 export CONDA_PKGS_PATH="${XDG_CONFIG_HOME:-$HOME/.config/conda/pkgs}"
 
-mkdir -p "$R_LIBS_USER"
 
 # Other program settings
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
