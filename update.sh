@@ -20,17 +20,17 @@ for file in $(find .local/bin -type f -not -path './.git/*' | sed '/.\/update.sh
   chmod +x "$HOME"/"$file"
 done
 
-if [ ! -f /etc/local.d/update.start ]; then
-  echo "The script will install itself to /etc/local.d/ so that it gets run at boot."
-  sudo cp "$configspath/update.sh" /etc/local.d/update.start
-  sudo chmod +x /etc/local.d/update.start
+if [ ! -f "$HOME/.local/bin/update.start" ]; then
+  echo "The script will install itself to $HOME/.local/bin/update.start so that it gets run at login. See your .zshrc"
+  cp "$configspath/update.sh" "$HOME/.local/bin/update.start"
+  chmod +x "$HOME/.local/bin/update.start"
 else
-  diff -u /etc/local.d/update.start "$configspath/update.sh" > "$configspath/update.sh.patch"
+  diff -u "$HOME/.local/bin/update.start" "$configspath/update.sh" > "$configspath/update.sh.patch"
   if cat "$configspath/update.sh.patch" | read -r _USELESSREPLY; then
-    echo "The script will patch the file /etc/local.d/update.start"
-    cat "$configspath/update.sh.patch" | sudo patch -p0 -d/
+    echo "The script will patch the file $HOME/.local/bin/update.start"
+    cat "$configspath/update.sh.patch" | patch -p0 -d/
   fi
-  rm update.sh.patch
+  rm "$configspath/update.sh.patch"
 fi
 
 cd "$oldpwd" || exit
