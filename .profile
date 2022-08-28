@@ -33,6 +33,9 @@ fi
 export CONDA_ENVS_PATH="${XDG_CONFIG_HOME:-$HOME/.config/conda/envs}"
 export CONDA_PKGS_PATH="${XDG_CONFIG_HOME:-$HOME/.config/conda/pkgs}"
 
+# make qt5 look normal
+export QT_QPA_PLATFORMTHEME="qt5ct"
+
 
 # Other program settings
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"

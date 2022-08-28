@@ -7,6 +7,8 @@ xset r rate 300 50 &
 
 setxkbmap de neo
 
+eww daemon
+
 pipewire &
 pipewire-pulse &
 wireplumber &
