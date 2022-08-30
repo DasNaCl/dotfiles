@@ -19,6 +19,7 @@ done
 for file in $(find .local/bin -type f -not -path './.git/*' | sed '/.\/update.sh/d' | sed '/.\/.gitignore/d'); do
   chmod +x "$HOME"/"$file"
 done
+chmod +x "$HOME"/.config/polybar/polybar_tray.sh
 
 if [ ! -f "$HOME/.local/bin/update.start" ]; then
   echo "The script will install itself to $HOME/.local/bin/update.start so that it gets run at login. See your .zshrc"
