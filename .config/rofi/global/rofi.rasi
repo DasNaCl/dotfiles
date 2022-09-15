@@ -24,11 +24,11 @@ window {
     transparency: "real";
     background-color: @transparent;
     text-color: @foreground;
-    location: southwest;
-    anchor: southwest;
+    location: center;
+    anchor: center;
     x-offset: 8;
     y-offset: -60;
-    height: 80%;
+    height: 40%;
     width: 600px;
     orientation: vertical;
 }
@@ -55,7 +55,7 @@ entry {
     expand: true;
     vertical-align: 0.5;
     horizontal-align: 0;
-    placeholder: "Global Search";
+    placeholder: "Type something...";
     placeholder-color: @foreground;
     blink: true;
 }

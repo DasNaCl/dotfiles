@@ -5,7 +5,7 @@
 # highlighting an area to copy. scrotcucks on suicidewatch right now.
 
 #case "$(printf "a selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)\\na selected area\\ncurrent window\\nfull screen" | dmenu -l 6 -i -p "Screenshot which area?")" in
-case "$(printf "a selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)\\na selected area\\ncurrent window\\nfull screen" | rofi -dmenu -i -p "Screenshot which area?" -hlbg '#9A6E29' -bc '#9A6E29')" in
+case "$(printf "a selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)\\na selected area\\ncurrent window\\nfull screen" | rofi -dmenu -i -p "Screenshot which area?" -theme $HOME/.config/rofi/global/rofi.rasi)" in
 	"a selected area") maim -s pic-selected-"$(date '+%y%m%d-%H%M-%S').png" ;;
 	"current window") maim -i "$(xdotool getactivewindow)" pic-window-"$(date '+%y%m%d-%H%M-%S').png" ;;
 	"full screen") maim pic-full-"$(date '+%y%m%d-%H%M-%S').png" ;;

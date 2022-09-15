@@ -37,6 +37,12 @@ modifier = ["modkey"]
 key = "q"
 
 [[keybind]]
+command = "Execute"
+value = "maimpick"
+modifier = []
+key = "Print"
+
+[[keybind]]
 command = "SoftReload"
 value = ""
 modifier = ["modkey", "Shift"]
@@ -75,8 +81,8 @@ key = "j"
 [[keybind]]
 command = "MoveWindowTop"
 value = ""
-modifier = ["modkey", "Shift"]
-key = "space"
+modifier = ["modkey"]
+key = "Tab"
 
 [[keybind]]
 command = "NextLayout"
