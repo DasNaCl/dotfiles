@@ -7,11 +7,11 @@
 
 twoscreen() { # If multi-monitor is selected and there are two screens.
 
-    mirror=$(printf "no\\nyes" | rofi -dmenu -i -p "Mirror displays?" -hlbg '#9A6E29' -bc '#9A6E29')
+    mirror=$(printf "no\\nyes" | rofi -dmenu -i -p "Mirror displays?" -theme "$HOME"/.config/rofi/global/rofi.rasi)
     # Mirror displays using native resolution of external display and a scaled
     # version for the internal display
     if [ "$mirror" = "yes" ]; then
-        external=$(echo "$screens" | rofi -dmenu -i -p "Optimize resolution for:" -hlbg '#9A6E29' -bc '#9A6E29')
+        external=$(echo "$screens" | rofi -dmenu -i -p "Optimize resolution for:" -theme "$HOME"/.config/rofi/global/rofi.rasi)
         internal=$(echo "$screens" | grep -v "$external")
 
         res_external=$(xrandr --query | sed -n "/^$external/,/\+/p" | \
@@ -32,18 +32,18 @@ twoscreen() { # If multi-monitor is selected and there are two screens.
             --scale "$scale_x"x"$scale_y"
     else
 
-        primary=$(echo "$screens" | rofi -dmenu -i -p "Select primary display." -hlbg '#9A6E29' -bc '#9A6E29')
+        primary=$(echo "$screens" | rofi -dmenu -i -p "Select primary display." -theme "$HOME"/.config/rofi/global/rofi.rasi)
         secondary=$(echo "$screens" | grep -v "$primary")
-        direction=$(printf "left\\nright" | rofi -dmenu -i -p "What side of $primary should $secondary be on?" -hlbg '#9A6E29' -bc '#9A6E29')
+        direction=$(printf "left\\nright" | rofi -dmenu -i -p "What side of $primary should $secondary be on?" -theme "$HOME"/.config/rofi/global/rofi.rasi)
         xrandr --output "$primary" --auto --scale 1.0x1.0 --output "$secondary" --"$direction"-of "$primary" --auto --scale 1.0x1.0
     fi
     }
 
 morescreen() { # If multi-monitor is selected and there are more than two screens.
-  primary=$(echo "$screens" | rofi -dmenu -i -p "Select primary display." -hlbg '#9A6E29' -bc '#9A6E29')
-	secondary=$(echo "$screens" | grep -v "$primary" | rofi -dmenu -i -p "Select secondary display." -hlbg '#9A6E29' -bc '#9A6E29')
-	direction=$(printf "left\\nright" | rofi -dmenu -i -p "What side of $primary should $secondary be on?" -hlbg '#9A6E29' -bc '#9A6E29')
-	tertiary=$(echo "$screens" | grep -v "$primary" | grep -v "$secondary" | rofi -dmenu -i -p "Select third display." -hlbg '#9A6E29' -bc '#9A6E29')
+  primary=$(echo "$screens" | rofi -dmenu -i -p "Select primary display." -theme "$HOME"/.config/rofi/global/rofi.rasi)
+	secondary=$(echo "$screens" | grep -v "$primary" | rofi -dmenu -i -p "Select secondary display." -theme "$HOME"/.config/rofi/global/rofi.rasi)
+	direction=$(printf "left\\nright" | rofi -dmenu -i -p "What side of $primary should $secondary be on?" -theme "$HOME"/.config/rofi/global/rofi.rasi)
+	tertiary=$(echo "$screens" | grep -v "$primary" | grep -v "$secondary" | rofi -dmenu -i -p "Select third display." -theme "$HOME"/.config/rofi/global/rofi.rasi)
 	xrandr --output "$primary" --auto --output "$secondary" --"$direction"-of "$primary" --auto --output "$tertiary" --"$(printf "left\\nright" | grep -v "$direction")"-of "$primary" --auto
 	}
 
@@ -61,7 +61,7 @@ allposs=$(xrandr -q | grep "connected")
 screens=$(echo "$allposs" | grep " connected" | awk '{print $1}')
 
 # Get user choice including multi-monitor and manual selection:
-chosen=$(printf "%s\\nmulti-monitor\\nmanual selection" "$screens" | rofi -dmenu -i -p "Select display arrangement." -hlbg '#9A6E29' -bc '#9A6E29')
+chosen=$(printf "%s\\nmulti-monitor\\nmanual selection" "$screens" | rofi -dmenu -i -p "Select display arrangement." -theme "$HOME"/.config/rofi/global/rofi.rasi)
 case "$chosen" in
 	"manual selection") arandr ; exit ;;
 	"multi-monitor") multimon ;;

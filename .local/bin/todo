@@ -10,7 +10,7 @@ file="$HOME/.todo"
 touch "$file"
 height=$(wc -l "$file" | awk '{print $1}')
 
-cmd=$(rofi -dmenu -i -p "Add/Delete task:" -hlbg '#9A6E29' -bc '#9A6E29' -l "$height" "$@" < "$file")
+cmd=$(rofi -dmenu -i -p "Add/Delete task:" -theme "$HOME"/.config/rofi/global/rofi.rasi -l "$height" "$@" < "$file")
 while [ -n "$cmd" ]; do
         if grep -q "^$cmd\$" "$file"; then
                 grep -v "^$cmd\$" "$file" > "$file.$$"
