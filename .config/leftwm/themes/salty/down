@@ -4,5 +4,15 @@ SCRIPTPATH="$( cd "$(dirname "$0")" || return ; pwd -P )"
 
 leftwm-command UnloadTheme
 
+picomproc=$(pgrep -x "picom")
+if [ "$(pgrep -x picom)" ]; then
+  killall picom
+fi
+
+redshiftproc=$(pgrep -x "redshift")
+if [ "$(pgrep -x redshift)" ]; then
+  killall redshift
+fi
+
 killall polybar
 

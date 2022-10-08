@@ -21,6 +21,11 @@ leftwm-command "LoadTheme $SCRIPTPATH/theme.toml"
 # Set background
 hsetroot -center "$SCRIPTPATH"/background.png
 
+if [ -x "$(command -v redshift)" ]; then
+  killall redshift
+  redshift -l 47:13 &
+fi
+
 #Start Polybar
 export index=0
 monitors=($(polybar -m | sed 's/:.*//'))
@@ -33,3 +38,5 @@ do
   monitor=${monitors[index]} width=$(( width - 16 )) polybar -c "$HOME"/.config/polybar/polybar.config $workspacesname &> /dev/null &
   let index=index+1
 done
+
+
