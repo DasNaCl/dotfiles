@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+pactl -- set-sink-volume 0 $1
+dunstctl close-all
+sleep 0.1
+notify-send Volume:\ $(pactl -- get-sink-volume 0 | awk '{print $5}')
+
