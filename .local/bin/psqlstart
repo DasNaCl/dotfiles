@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+user=$whoami
+sudo chown -R $user:$user /var/lib/postgres/data
+sudo mkdir /run/postgresql
+sudo chown -R $user:$user /run/postgresql
+pg_ctl -D /var/lib/postgres/data start
