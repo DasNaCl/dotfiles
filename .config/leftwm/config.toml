@@ -49,6 +49,12 @@ modifier = ["modkey"]
 key = "q"
 
 [[keybind]]
+command = "ToggleFloating"
+value = ""
+modifier = ["modkey"]
+key = "f"
+
+[[keybind]]
 command = "Execute"
 value = "maimpick"
 modifier = []
