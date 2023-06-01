@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-user=$whoami
+user=$(whoami)
 sudo chown -R $user:$user /var/lib/postgres/data
 sudo mkdir /run/postgresql
 sudo chown -R $user:$user /run/postgresql
