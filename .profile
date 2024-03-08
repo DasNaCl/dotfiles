@@ -4,9 +4,9 @@
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export PATH="$PATH:$HOME/.emacs.d/bin/"
 export PATH="$PATH:/opt/context/tex/texmf-linux-64/bin"
-export PATH="$PATH:/opt/texlive/2022/bin/x86_64-linux/"
-export MANPATH="$MANPATH:/opt/texlive/2022/texmf-dist/doc/man/"
-export INFOPATH="$INFOPATH:/opt/texlive/2022/texmf-dist/doc/info/"
+export PATH="$PATH:/opt/texlive/2023/bin/x86_64-linux/"
+export MANPATH="$MANPATH:/opt/texlive/2023/texmf-dist/doc/man/"
+export INFOPATH="$INFOPATH:/opt/texlive/2023/texmf-dist/doc/info/"
 
 # Default programs
 export EDITOR="nvim"
@@ -24,7 +24,7 @@ export OPAMROOT="$HOME/.local/opam"
 export TEXMFHOME="$HOME/.local/texmf"
 export TEXMFVAR="$HOME/.local/texlive/texmf-var"
 export TEXMFCONFIG="$HOME/.local/texlive/texmf-config"
-if command -v R --version &>/dev/null; then
+if command -v R &>/dev/null; then
   export R_LIBS_USER="$HOME/.local/R/x86_64-linux-gnu-library/$(R --version | grep 'R version' | cut -f 3 -d ' ' -)"
   export R_PROFILE_USER="${XDG_CONFIG_HOME:-$HOME/.config}/R/rprofile"
   export R_ENVIRON_USER="${XDG_CONFIG_HOME:-$HOME/.config}/R/renviron"
